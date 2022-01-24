@@ -1,0 +1,44 @@
+I reccomend EVERYONE stores commands in some kind of text 
+
+If using apple the default notes software adds weird characters
+
+Within MySQL all command words should be upper case 
+
+MySQL - Semantic, word focused commands
+
+How to create a database
+
+create database <name of database>;
+
+How to tell MySQL to use this database
+
+USE <db name>
+
+
+Making our table
+
+name of table: Pizzas
+
+Toppings       - varchar(30)
+Size	       - tinyInt
+StuffedCrust - boolean 
+
+Either going to have a stuffedCrust or not
+
+before we can run this command, we need to tell mysql to use our pizzeria database
+
+CREATE TABLE pizzas (
+toppings VARCHAR(30), 
+size TINYINT,
+stuffedCrust BOOLEAN
+);
+
+See what headings are in a table:
+DESCRIBE <table name>
+
+
+
+
+
+
+
