@@ -1,66 +1,53 @@
-I reccomend EVERYONE stores commands in some kind of text 
+Generally all things we push into a database have some kind of id attached to them
 
-If using apple the default notes software adds weird characters
+id - Unique reference code to a record, allows the entire record to be recalled 
 
-Within MySQL all command words should be upper case 
+order_id - 0373027101282abvdvce
+item_id - ce22ejvcwekve
 
-MySQL - Semantic, word focused commands
+Our tables should always assign data a unique_id 
 
-How to create a database
+Pizzas table - pizza_id 
+Customers   - customer_id
 
-create database <name of database>;
-
-How to tell MySQL to use this database
-
-USE <db name>
+Every piece of data added to a table, or database should have atleast one unique field so you can grab a specific piece 
 
 
-Making our table
-
-name of table: Pizzas
-
-Toppings       - varchar(30)
-Size	       - tinyInt
-StuffedCrust - boolean 
-
-Either going to have a stuffedCrust or not
-
-before we can run this command, we need to tell mysql to use our pizzeria database
+Within MySQL we call this ID our Primary Key
 
 CREATE TABLE pizzas (
-toppings VARCHAR(30), 
-size TINYINT,
-stuffedCrust BOOLEAN
+pizza_id INT AUTO_INCREMENT, 
+PRIMARY KEY (pizza_id),
+toppings VARCHAR(30) DEFAULT 'Mozzerella',
+size TINYINT NOT NULL, 
+stuffed_crust BOOLEAN NOT NULL
 );
 
-Formatting in MySQL, nouns fields, table names etc
-should be lower_snake_case
-No spaces between names
-
 CREATE TABLE customers (
-name VARCHAR(30)
-address VARCHAR(60)
-age TINYINT
+customer_id INT AUTO_INCREMENT,
+PRIMARY KEY (customer_id),
+email VARCHAR(40) UNIQUE,
+name VARCHAR(30),
+address VARCHAR(60),
+age TINYINT,
 new_customer BOOLEAN
 );
 
-See what headings are in a table:
-DESCRIBE <table name>
+UNIQUE - All values of this must be UNIQUE
+e.g email / username
 
-MySQL has a BUNCH of reserved words, these have meanings and cannot be used to name stuff
+NOT NULL - You must enter data for this field, it cannot be left null / empty 
+e.g address
 
-CANNOT MAKE A TABLE of tables
-CREATE TABLE table (
+DEFAULT - If a value is not entered, a default value is used instead
+e.g prices DEFAULT '10'
 
-
-Deleting a table
-
-DROP TABLE <table name>
-
+AUTO_INCREMENT - Reserved for our ID, every time you enter new data it increases by 1 starting from 0
+e.g pizza_id / customer_id
 
 
 
 
 
 
-
+ 
