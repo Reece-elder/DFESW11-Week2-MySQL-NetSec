@@ -1,0 +1,81 @@
+DML - Data Manipulation Language - Creating / changing data
+
+DQL - Data Query Language - Querying and returning said data
+
+SELECT * FROM Table - Returns ALL Data from the table
+
+* - Wildcard, returns all 
+
+SHOW databases;
+SHOW tables;
+DESCRIBE table_name;
+
+SELECT * FROM film - grab all the fields from film
+
+Only interested in title, length, rating
+
+Allows us to specify what fields we want to see
+SELECT title, length, rating FROM film;
+
+
+I want to see all films with a rating of PG-13
+
+SELECT rating = PG-13 FROM films;
+
+SELECT film_id, title, rental_duration, rental_rate, length FROM film WHERE rating = 'PG-13';
+Only see id, title, rental duration, rental price, length
+
+
+I want to see a film called Shock Cabin 
+SELECT * FROM film WHERE title = 'Shock Cabin';
+
+
+Pattern Matching - Looks for data that matches a pattern - lets us use wildcards
+
+SELECT * FROM film WHERE title LIKE 'Shock Cabin';
+
+Every film with the word Cabin in it, with some or no characters before or after
+SELECT * FROM film WHERE title 
+LIKE '%cabin%'; 
+
+
+View every film where length is less than 90
+SELECT * FROM film WHERE length < 90;
+
+View every film where length is less than or equal to 90
+SELECT * FROM film WHERE length <= 90;
+
+View every film where length is between 100 and 110 
+SELECT * FROM film WHERE length BETWEEN 100 and 110
+
+SELECT * FROM film WHERE length > 100 AND length < 110;
+
+
+Ordering - Order data ASC / DESC by a certain field (Is ASC unless specified)
+
+SELECT title, rating, description, length FROM film ORDER BY title DESC;
+
+
+Find all films with the word shrek in
+less than 110 mins
+order by descending by title
+
+SELECT title, rating, length, description FROM film WHERE title LIKE '%shrek%' AND length BETWEEN 150 AND 160 ORDER BY title DESC;
+
+
+Grabbing unique values - Grabs the unique values of this field and shows the first one
+Wont work if using DISTINCT field, regular field
+DISTINCT
+SELECT DISTINCT rating FROM film;
+
+SELECT DISTINCT rating, DISTINCT title FROM film;
+
+
+Aliasing AS - Used to rename and modify fields to show data better
+
+Using Aliasing to get the rental price by adding rental_rate and replacement_cost
+
+SELECT title, rental_rate + replacement_cost AS rental_price FROM film;
+
+SELECT CONCAT(title, ' - ',description) AS title-description FROM film; 
+
