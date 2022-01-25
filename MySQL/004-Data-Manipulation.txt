@@ -11,9 +11,70 @@ INSERT INTO customers (name, email, new_customer) VALUES ('Ainsley', 'ainsley@gm
 
 INSERT INTO orders (customer_id, pizza_id) VALUES (1,1);
 
-Exercise - Add atleast 2 records to each of your tables 
-Make sure you add records in the correct order if you have foreign keys 
-View your records using SELECT * FROM table name
+We can insert multiple records at the same time, by adding a comma after the values
+
+INSERT INTO pizzas (toppings, size, stuffed_crust) VALUES 
+('Pepperoni pineapple', 12, true), ('Hawiaan', 13, false), 
+('Four cheese', 10, true);
+
+
+Deleting data - Removing it from the database
+
+DELETE FROM <table_name>; 
+- Delete EVERYTHING
+
+DELETE FROM <table_name> WHERE field = value 
+
+DELETE FROM pizzas WHERE pizza_id = 2;
+
+DELETE FROM pizzas WHERE stuffed_crust = true;
+
+Important thing to remember 
+
+You cant delete a record IF a table uses it as a foreign key!! Delete the foreign key record first! 
+
+Exercise 
+- Have atleast 4 records in each table 
+- Using Delete commands attempt the following: 
+DELETE ALL From one table
+Delete using one field
+Delete using AND (two fields)
+Delete using OR (two fields)
+
+Edit > Preferences > SQL Editor > Disable Safe Mode
+Reconnect to Database
+
+
+Updating Data - Finding a record and modifying it
+- Resetting a password, company will look for your id / email and reset the password
+
+- Outline the table
+- Specify the field to change
+- What to change the fields value to 
+- What conditions (WHERE) to change
+
+UPDATE pizzas 
+SET size = 12
+WHERE stuffed_crust = true;
+
+UPDATE customers 
+SET email = 'Ainsley@hotmail.com'
+WHERE customer_id = 1;
+
+
+UPDATE customers
+SET name = 'Reece Elder', 
+email = 'relder@qa.com', 
+new_customer = false
+WHERE email = 'reece.elder@qa.com';
+
+Exercise
+- Update a records field using id
+- Update a records field using a varchar
+- Update a records field using an int
+- Update an entire record using one value 
+
+
 
 
 Simple Read command
@@ -21,3 +82,10 @@ Simple Read command
 SELECT * FROM <table>
 
 View All Fields FROM <table name>
+
+new codeeeee
+
+
+
+
+
