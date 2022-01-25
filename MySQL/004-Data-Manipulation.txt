@@ -1,0 +1,23 @@
+CREATE 
+
+INSERT command
+
+INSERT INTO <table name> (field names) VALUES (Values to insert);
+You dont specify the id, as this is auto incremented
+
+INSERT INTO pizzas (toppings, size, stuffed_crust) VALUES ('Pepperoni pineapple', 12, true);
+
+INSERT INTO customers (name, email, new_customer) VALUES ('Ainsley', 'ainsley@gmail.com', true);
+
+INSERT INTO orders (customer_id, pizza_id) VALUES (1,1);
+
+Exercise - Add atleast 2 records to each of your tables 
+Make sure you add records in the correct order if you have foreign keys 
+View your records using SELECT * FROM table name
+
+
+Simple Read command
+
+SELECT * FROM <table>
+
+View All Fields FROM <table name>
