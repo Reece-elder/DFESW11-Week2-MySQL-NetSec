@@ -30,5 +30,26 @@ SELECT * FROM country WHERE Population = (
 SELECT MAX(Population) FROM country
 );
 
+Question: Get the Name, Continent, Region, life expectancy of the country with the highest life expectancy under 75
+
+1) - Highest LifeExp UNDER 75
+2) - Name, Continent, Region, LifeExp of country
+
+SELECT Name, Continent, Region, LifeExpectancy FROM country WHERE LifeExpectancy = (
+SELECT MAX(LifeExpectancy) FROM country WHERE LifeExpectancy < 75
+);
+
+Nested Queries can only work if the original only returns ONE THING
+
+SELECT * FROM Country WHERE Name = (
+    SELECT Name FROM Country WHERE Code = 'CHN'
+);
+
+Won't work because the nested query returns more than one record
+
+SELECT * FROM Country WHERE Name = (
+    SELECT Name FROM Country WHERE Region = 'Eastern Asia'
+);
+
 
 
