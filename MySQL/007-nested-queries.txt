@@ -1,0 +1,55 @@
+Nested queries - 
+
+Queries that use results of other queries to query the data.
+Using an aggregate function to give a value (min(Population)) using that value to get the name of it
+
+Get the name of the Country with the smallest surface area 
+
+1) Get the country with the smallest surface area
+2) Get the name of this country
+
+Generally used to query info you dont know yet
+
+
+SELECT MIN(SurfaceArea) FROM country; 
+
+SELECT Name, SurfaceArea FROM country WHERE SurfaceArea = x
+
+Nested query:
+SELECT Name, SurfaceArea FROM country WHERE SurfaceArea = ( 
+    SELECT MIN(SurfaceArea) FROM country
+);
+
+
+Get the all details of the country with the highest population
+
+1) - Highest Population
+2) - All of the details
+
+SELECT * FROM country WHERE Population = (
+SELECT MAX(Population) FROM country
+);
+
+Question: Get the Name, Continent, Region, life expectancy of the country with the highest life expectancy under 75
+
+1) - Highest LifeExp UNDER 75
+2) - Name, Continent, Region, LifeExp of country
+
+SELECT Name, Continent, Region, LifeExpectancy FROM country WHERE LifeExpectancy = (
+SELECT MAX(LifeExpectancy) FROM country WHERE LifeExpectancy < 75
+);
+
+Nested Queries can only work if the original only returns ONE THING
+
+SELECT * FROM Country WHERE Name = (
+    SELECT Name FROM Country WHERE Code = 'CHN'
+);
+
+Won't work because the nested query returns more than one record
+
+SELECT * FROM Country WHERE Name = (
+    SELECT Name FROM Country WHERE Region = 'Eastern Asia'
+);
+
+
+
