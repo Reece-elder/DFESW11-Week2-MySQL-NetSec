@@ -1,0 +1,63 @@
+use sakila;
+
+DESCRIBE actor;
+
+# % Modulus is what the remainder is when you divide 
+# 5 / 2 = 2 remainder 1 
+# 5 % 2 = 1
+# 100 % 10 = 0
+# 25 % 10 = 5
+
+SELECT first_name, last_name FROM actor WHERE actor_id % 10 = 0;
+
+# FInd every movie WITHOUT rating R 
+
+SELECT * FROM film WHERE rating != 'R';
+
+# Find all movies with deleted scenes
+DESCRIBE film;
+
+SELECT * FROM film WHERE special_features LIKE '%Deleted Scenes%';
+
+
+# Which last names are not repeated 
+# If a name has a count of 1, it has not been repeated
+
+# SELECT first_name, COUNT(last_name) FROM actor WHERE (COUNT(last_name = 1));
+SELECT * FROM actor GROUP BY last_name HAVING COUNT(last_name) = 1;
+
+# Average running time of films by category 
+SELECT * FROM film;
+SELECT * FROM category;
+SELECT * FROM film_category;
+SELECT * FROM film_list;
+
+SELECT category, AVG(length) FROM film_list GROUP BY category;
+
+
+# Which last names appear more than once 
+# Count number of times a name appears
+# Print the names that do appear again 
+
+SELECT * FROM actor group by last_name HAVING COUNT(last_name) > 1;
+
+# Which actor has appeared in most films
+# Count of films
+# Grab the actor id 
+
+DESCRIBE film_actor;
+SELECT * FROM film_actor ORDER BY film_id;
+SELECT * FROM film_actor ORDER BY actor_id;
+
+SELECT * FROM film_actor WHERE actor_id = 1;
+SELECT COUNT(film_id) FROM film_actor WHERE actor_id = 2;
+
+SELECT * FROM film_actor WHERE COUNT(film_id) = (SELECT COUNT(film_id) FROM film_actor);
+
+SELECT * FROM film_actor GROUP BY film_id;
+
+# If we wanted to grab the name of this actor we need to join it to our actor table 
+SELECT *, count(actor_id) as film_apperances FROM film_actor GROUP BY actor_id ORDER BY count(actor_id) DESC Limit 1;
+
+SELECT first_name, last_name, count(film_actor.actor_id) as film_apperances FROM film_actor JOIN actor ON film_actor.actor_id = actor.actor_id GROUP BY film_actor.actor_id ORDER BY count(film_actor.actor_id) DESC Limit 1;
+

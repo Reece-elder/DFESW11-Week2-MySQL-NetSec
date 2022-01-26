@@ -1,0 +1,8 @@
+Joins
+
+Joins allow us to combine data from two different tables and bring both sets of data together
+
+GENERALLY you use primary / foreign keys to connect your data 
+
+There are different types of joins you can use, inner, outer, right and left
+But we're only going to use inner as it is the default (and most useful) 
