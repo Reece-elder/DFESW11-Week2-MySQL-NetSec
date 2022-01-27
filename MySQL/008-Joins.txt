@@ -6,3 +6,21 @@ GENERALLY you use primary / foreign keys to connect your data
 
 There are different types of joins you can use, inner, outer, right and left
 But we're only going to use inner as it is the default (and most useful) 
+
+With the Pizzeria Demo, Orders 
+
+SELECT * FROM primary_table JOIN secondary_table ON primary_table.primary_key = secondary_table.foreign_key
+
+SELECT * FROM pizzas JOIN orders ON pizzas.pizza_id = orders.pizza_id;
+
+Join the Customers Table to the orders table
+
+SELECT * FROM customers JOIN orders ON customers.customer_id = orders.customer_id; 
+
+
+
+Join the Pizzas table with the orders table, then Join that with the customers table 
+
+SELECT * FROM pizzas 
+JOIN orders ON pizzas.pizza_id = orders.pizza_id 
+JOIN orders.customer_id ON customers.customer_id;
