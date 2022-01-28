@@ -33,7 +33,7 @@ size TINYINT,
 stuffedCrust BOOLEAN
 );
 
-Formatting in MySQL, nouns fields, table names etc
+blah in MySQL, nouns fields, table names etc
 should be lower_snake_case
 No spaces between names
 
