@@ -1,0 +1,53 @@
+Generally all things we push into a database have some kind of id attached to them
+
+id - Unique reference code to a record, allows the entire record to be recalled 
+
+order_id - 0373027101282abvdvce
+item_id - ce22ejvcwekve
+
+Our tables should always assign data a unique_id 
+
+Pizzas table - pizza_id 
+Customers   - customer_id
+
+Every piece of data added to a table, or database should have atleast one unique field so you can grab a specific piece 
+
+
+Within MySQL we call this ID our Primary Key
+
+CREATE TABLE pizzas (
+pizza_id INT AUTO_INCREMENT, 
+PRIMARY KEY (pizza_id),
+toppings VARCHAR(30) DEFAULT 'Mozzerella',
+size TINYINT NOT NULL, 
+stuffed_crust BOOLEAN NOT NULL
+);
+
+CREATE TABLE customers (
+customer_id INT AUTO_INCREMENT,
+PRIMARY KEY (customer_id),
+email VARCHAR(40) UNIQUE,
+name VARCHAR(30),
+address VARCHAR(60),
+age TINYINT,
+new_customer BOOLEAN
+);
+
+UNIQUE - All values of this must be UNIQUE
+e.g email / username
+
+NOT NULL - You must enter data for this field, it cannot be left null / empty 
+e.g address
+
+DEFAULT - If a value is not entered, a default value is used instead
+e.g prices DEFAULT '10'
+
+AUTO_INCREMENT - Reserved for our ID, every time you enter new data it increases by 1 starting from 0
+e.g pizza_id / customer_id
+
+
+
+
+
+
+ 

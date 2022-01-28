@@ -1,0 +1,74 @@
+Aggregate Functions
+
+- Functions / queries that combine multiple records/values into one thing
+
+COUNT - Count values, return a number
+SUM   - Work out the total value of a field
+MIN / MAX - Return the Min or max value
+AVG   - Returns the average
+
+
+COUNT 
+
+Returns number of records that match 
+
+SELECT COUNT(field name) FROM table
+SELECT COUNT(country) FROM country;
+
+We can also use queries (WHERE) to refine this list
+
+SELECT COUNT(title) FROM film WHERE length > 90;
+
+
+SUM 
+
+Used to calculate the total value of numerical fields
+
+SELECT SUM(numerical field) FROM table
+SELECT SUM(Population) FROM city;
+
+SELECT SUM(Population) FROM city WHERE CountryCode LIKE 'AUS';
+
+how could we work out the population of all cities that are not in Spain ESP 
+
+!= - NOT EQUALS
+
+SELECT SUM(Population) FROM city WHERE CountryCode != 'ESP';
+
+
+MIN MAX AVG 
+
+Used to calculate the Min OR Max OR Avg value 
+
+SELECT MIN(Population) FROM city;
+SELECT MAX(Population) FROM city;
+SELECT AVG(Population) FROM city;
+
+
+If asking for more info: 
+SELECT ID, Name, AVG(Population) FROM city;
+
+Grabs the first ID and first name when doing SELECT * and puts it in front, no relation to the aggregate 
+
+
+GROUP BY
+Used with aggregate functions to seperate out functions into their groups 
+- Allows us to see the max population per countrycode, rather than max pop for entire table 
+
+SELECT CountryCode, MAX(Population) FROM city 
+WHERE population BETWEEN 4000 AND 40000 GROUP BY CountryCode;
+
+Exercises 
+- Find the average SurfaceArea of all countries
+- Max Life Expectancy
+- Min GNP
+- SUM of Population from all countries
+- Surface Area Grouped by CODE
+- Count the names with indepedent year not being null
+
+
+
+
+
+
+
